@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/afquery.js" ></script>
+		<style>
+			.course{
+				text-decoration:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class='.main'>
+			<div>
+				<button onclick='reload()'> 刷新 </button>
+			</div>
+			<div class='course-list'>
+				
+			</div>
+		</div>
+	</body>
+	<script>
+		function reload()
+		{
+			$('.course-list').html(''); // 清空
+			
+			var req = {};
+			Af.rest("CourseList", req, function(data){
+				// 注：直接JS拼接吧，不使用工具替换了
+				// var templStr = "<a class='course' href='{#url}'> {#name} </a><br>";
+				// var templ = new AfTemplate(templStr);
+				
+				for( var row of data)
+				{
+					var str = "<a class='course' href='##1'> ##2 </a><br>";
+					// 将##1替换为 url, ##2替代为 name，这是正则表达式替代的写法
+					str = str.replace(/##1/g, row.url).replace(/##2/g, row.name); 
+					
+					$('.course-list').append( str )	;				
+				}
+			})
+		}
+	</script>
+</html>

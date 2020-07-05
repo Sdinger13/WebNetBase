@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<title></title>
+		   <style>
+    	.main
+    	{
+    		width: 360px;
+    		margin: 10px auto;    		
+    	}
+    	.main input,select{
+    		width: 250px;
+    		padding: 4px;
+    		margin: 2px;
+    	}
+    </style>
+	</head>
+	<body>
+	本页面用于展示Restful ajax post数据
+		<div class="main">
+			<div class='info'> 
+	  		
+	    	学号: <input type='text' class='id' />  <br>  <!-- name: 即参数名 -->
+	    	姓名: <input type='text' class='name' /> <br>
+	    	手机: <input type='text' class='phone' /> <br>
+	    	性别: <select class='sex' >
+	    		<option value='male'> 男 </option>
+	    		<option value='female'> 女 </option>
+	    	</select> <br>
+	    	<button onclick='doSubmit()'> 提交 </button> 	    
+	    </div>
+		</div>
+	</body>
+	
+	<script>
+		function doSubmit()
+		{
+			//请求参数
+			var f = $(".info");
+			var req = {};
+			req.id = $(".id",f).val().trim();// 在父容器f下找子控件 .id, 相当于 $('.info .id')
+			req.name = $(".name",f).val().trim();
+			req.phone = $(".info .phone").val().trim();
+			req.sex = $(".sex",f).val().trim();
+			
+			// 转成 JSON 字符串
+		    var jsonstr = JSON.stringify(req);
+		    
+			$.ajax({
+				type:"post",
+				url:"AddStudent2",
+				async:true,
+				data:jsonstr,
+				dataType:'json',
+				success:function(resp){
+					console.log(resp);
+					if(resp.error == 0)
+						alert("成功");
+					else
+						alert("失败:"+resp.reason);
+				},
+				error:function(jqXHR,textStatus,errorThrown)
+				{
+					alert("错误:"+jqXHR.status);
+				}
+			});
+		}
+	</script>
+</html>

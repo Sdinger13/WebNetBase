@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+	<course name="快速入门" url="http://sample1" /> 
+	<course name="高级语法" url="http://sample2"/> 
+	<course name="网页基础" url="http://sample3"/> 
+	<course name="网站入门" url="http://sample4"/> 
+	
+</config>

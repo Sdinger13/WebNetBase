@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/common.css" />
+		<script type="text/javascript" src="js/afquery.js" ></script>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+	</head>
+	<body>
+		本页面用于Restful的列表查询与显示
+		<div class="container">
+			
+			<div style="background-color: #F8F8FF;padding: 4px;">
+				<a href="test11.html">首页</a>>>列表
+			</div>
+			
+			<div class="row">
+				<a href="test12.html">添加</a>
+			</div>
+			
+			<div class="row student-list">
+				<table style="width: 100%;">
+					<thead>
+						<tr>
+							<th>学号</th>
+							<th> 姓名 </th>
+							<th> 性别</th>
+							<th> 手机号 </th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--这里是预留的给列表的空间-->
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var M = {};
+	
+	M.test = function()
+	{
+		var req = {};
+		req.id = 20154550;
+		// 带4个参数: uri, req, okHandler, errHandler
+		Af.rest('RestfulTest',req,function(resp){
+			console.log(resp);
+		},
+		function(error,reason)
+		{
+			alert(reason);
+		});
+	}
+	
+	
+//	列表查询
+	M.listStudent = function()
+	{
+		var req = {};
+		
+//		Af.rest('StudentListServlet',req,function(resp){
+		Af.rest('StudentList.api',req,function(resp){
+			console.log(resp);
+			M.addStudentList(resp);
+		});
+	}
+	
+	
+	//添加学生记录到表格
+	M.addStudentList = function(data)
+	{
+		var target = $(".student-list tbody");// <tbody>
+		target.html("");// 清空
+		
+		for(var i=0;i<data.length;i++)
+		{
+			var it = data[i];
+			var str = "<tr>"
+			+"<td>"+it.id+"</td>"
+			+ "<td>" + it.name + "</td>"
+			+"<td> "+(it.sex?'男':'女')+"</td>"
+			+ "<td>" + it.phone + "</td>"
+			+ "</tr>";
+			
+			target.append(str);
+		}
+	}
+	
+	//初始加载
+	M.listStudent();
+	
+	
+	
+	</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		  <style>
+    	.main
+    	{
+    		width: 360px;
+    		margin: 10px auto;    		
+    	}
+    	.main input,select{
+    		width: 250px;
+    		padding: 4px;
+    		margin: 2px;
+    	}
+    </style>
+	</head>
+	<body>
+	本页面用于展示form传递数据（form一般不使用，仅在文件上传时使用）
+		<div class="main">
+			<!--  method: GET/POST，通常为POST  action: 即后台接口相对路径 -->
+			<form method="POST" action="AddStudent">
+				学号:<input type="text" name="id" /><br /> <!-- name: 即参数名 -->
+				姓名: <input type='text' name='name' /> <br>
+	    	 	手机: <input type='text' name='phone' /> <br>
+	    	 	<select name="sex">
+	    	 		<option value="male">男</option>
+	    	 		<option value="female">女</option>
+	    	 	</select><br />
+	    	 	<input type="submit" value="提交" />  <!-- type=submit表示自动执行提交功能 -->
+			</form>
+		</div>
+	</body>
+</html>

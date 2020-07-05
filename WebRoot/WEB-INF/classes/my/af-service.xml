@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+	<service name="Hello" class="my.HelloApi" /> 
+	
+	<service name="HowOld" class="my.HowOldApi" /> 
+	
+	<service name="AreYouGood" class="my.AreYouGoodApi" /> 
+	
+	<service name="WhatTimeNow" class="my.WhatTimeNowApi" /> 
+	
+	<service name="Shaofa" class="my.ShaofaApi"/>
+	
+	<service name="StudentList" class ="my.StudentListApi"/>
+	
+	<service name="Example" class ="my.ExampleApi"/>
+	
+	<service name="StudentList" class ="my.StudentListApi"/>
+	
+	<service name="StudentAdd" class ="my.StudentAddApi"/>
+	
+</config>

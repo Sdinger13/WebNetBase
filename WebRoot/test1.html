@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<style>
+			.main{
+				width: 800px;
+				margin: 40px auto;
+			}
+			.form{
+				
+			}
+			.form .commit{
+				min-width: 80px;
+				padding: 6px;
+			}
+		</style>
+	</head>
+	<body>
+	本页面仅用于展示ajax的使用
+		<div class="main">
+			<div class="form">
+				<button class="commit" onclick="query()">查询</button>
+			</div>
+		</div>
+	</body>
+	<script>
+		//jquery ajax调用的一般写法
+		//$.ajax()或者写成jQuery.ajax()是一样的
+			function query()
+		{
+			$.ajax({
+				type:'GET',       /* 请求类型 GET / POST */ 
+				url:'QueryAll',  /* 服务URI, 用相对地址 */				
+				dataType: 'json', /* 期望服务器返回的数据类型 */
+				success: function(resp){  /* 已经将服务器返回的数据转成 JS对象 */
+					console.log(resp);
+				}
+			});
+		}
+		
+	</script>
+</html>

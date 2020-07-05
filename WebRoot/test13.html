@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/afquery.js" ></script>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<meta charset="UTF-8">
+		<title></title>
+		
+			
+		<style>
+			.main {
+				width: 600px;
+				margin: 10px auto;
+			}
+			.main .title{
+				width: 100%;
+				box-sizing: border-box;
+				margin: 4px 0px;
+			}
+			.main .content{
+				width: 100%;
+				height: 150px;
+				box-sizing: border-box;
+				margin: 4px 0px;
+			}
+		</style>
+	</head>
+	<body>
+	本页面用于文件存储测试
+		<div class="main">
+			<div>
+				<input type="text" class="title" />
+			</div>
+			<div>
+				<textarea class="content"></textarea>
+			</div>
+			<div>
+				<button onclick="M.save()">保存</button>
+			</div>
+		</div>
+	</body>
+	<script>
+		M= {};
+		M.save = function()
+		{
+			var req = {};
+			req.title = $(".main .title").val().trim();
+			req.content = $(".main .content").val().trim();
+			
+			Af.rest('SaveFileServlet',req,function(resp){
+				console.log(resp);
+				alert("保存成功！");
+				$(".main .title").val("");
+				$(".main .content").val("");
+			});
+		}
+		
+		
+		
+	</script>
+</html>

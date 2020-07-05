@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/common.css" />
+		<script type="text/javascript" src="js/afquery.js" ></script>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+	</head>
+	<body>
+		本页面用于展示Af-Jquery框架的测试
+		<div class="container">
+			<div>
+				<button onclick='M.test()'> 测试 </button> 	    
+			</div>
+		</div>
+	</body>
+	<script>
+//  两个版本进行比较
+//	function doSubmit()
+//		{
+//		var req = {};
+//		req.id = 20180001;
+//		
+//		var jsonstr = JSON.stringify(req);
+//		
+//		jQuery.ajax({
+//			type:'Post',
+//			url:'RestfulTest',
+//			data:jsonstr,
+//			dataType:'json',
+//			success:function(resp)
+//			{
+//				console.log(resp);
+//				if(resp.error == 0) 
+//					alert('成功');
+//				else
+//					alert('出错:' + resp.reason);
+//			},
+//			error: function(jqXHR, textStatus, errorThrown)
+//			{
+//				alert("错误:" + jqXHR.status);
+//			}
+//		});
+//		}
+
+
+
+
+
+
+
+	var M = {};
+	
+	M.test = function()
+	{
+		var req = {};
+		req.id = 20154550;
+		// 带4个参数: uri, req, okHandler, errHandler
+		Af.rest('RestfulTest',req,function(resp){
+			console.log(resp);
+		},
+		function(error,reason)
+		{
+			alert(reason);
+		});
+	}
+		
+		
+	</script>
+</html>
